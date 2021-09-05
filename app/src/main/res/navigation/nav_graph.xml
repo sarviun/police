@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.nuivras.police.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_recordListFragment"
+            app:destination="@id/recordListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordListFragment"
+        android:name="com.nuivras.police.RecordListFragment"
+        android:label="record_list_fragment"
+        tools:layout="@layout/record_list_fragment" >
+        <action
+            android:id="@+id/action_recordListFragment_to_recordDetailFragment"
+            app:destination="@id/recordDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordDetailFragment"
+        android:name="com.nuivras.police.RecordDetailFragment"
+        android:label="record_detail_fragment"
+        tools:layout="@layout/record_detail_fragment" />
+</navigation>
