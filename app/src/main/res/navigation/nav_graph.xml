@@ -22,6 +22,10 @@
         <action
             android:id="@+id/action_recordListFragment_to_recordDetailFragment"
             app:destination="@id/recordDetailFragment" />
+        <argument
+            android:name="coordinates"
+            app:argType="string"
+            />
     </fragment>
     <fragment
         android:id="@+id/recordDetailFragment"

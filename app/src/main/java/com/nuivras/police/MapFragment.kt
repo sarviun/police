@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
@@ -60,7 +60,9 @@ class MapFragment : Fragment() {
             }
 
             mapboxMap.addOnMapClickListener { point ->
-                Toast.makeText(context, String.format("User clicked at: %s", point.toString()), Toast.LENGTH_LONG).show()
+                val coordinates = point.latitude.toString() + "," + point.longitude.toString()
+                val action = MapFragmentDirections.actionMapFragmentToRecordListFragment(coordinates)
+                this.findNavController().navigate(action)
                 true
             }
         }
