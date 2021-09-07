@@ -1,4 +1,4 @@
-package com.nuivras.police
+package com.nuivras.police.RecordList
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.nuivras.police.R
+import com.nuivras.police.StreetLevelCrime
 import com.nuivras.police.databinding.RecordListFragmentBinding
 
 class RecordListFragment : Fragment() {
@@ -26,13 +29,19 @@ class RecordListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = RecordListFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        binding.coordinatesTextView.text = args.coordinates
 
+        binding.coordinatesTextView.text = args.coordinates
+        binding.listView.adapter = ResultListAdapter(ResultListAdapter.OnClickListener {
+                crime: StreetLevelCrime, view: View ->
+
+            /** NAVIGATE TO CRIME **/
+            val action = RecordListFragmentDirections.actionRecordListFragmentToRecordDetailFragment(crime)
+            this.findNavController().navigate(action)
+        })
 
         viewModel.properties.observe(viewLifecycleOwner, Observer {
-            binding.listView.adapter = ResultListAdapter(it)
-
+            val adapter = binding.listView.adapter as ResultListAdapter
+            adapter.submitList(it)
             binding.infoTextView.text = getString(R.string.incidents_found_number, it.size)
         })
 
@@ -47,7 +56,7 @@ class RecordListFragment : Fragment() {
             }
         })
 
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

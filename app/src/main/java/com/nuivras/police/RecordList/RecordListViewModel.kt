@@ -1,8 +1,9 @@
-package com.nuivras.police
+package com.nuivras.police.RecordList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.nuivras.police.PoliceServiceAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -37,7 +38,6 @@ class RecordListViewModel : ViewModel() {
 
     fun getStreetLevelCrimes(latitude: String, longitude: String) {
         coroutineScope.launch {
-
             try {
                 _status.value = PoliceApiStatus.LOADING
                 _properties.value = PoliceServiceAPI.retrofitService

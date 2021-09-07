@@ -1,11 +1,14 @@
 package com.nuivras.police
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class StreetLevelCrime(
     @Json(name = "category")
     val category: String?,
@@ -25,8 +28,9 @@ data class StreetLevelCrime(
     val locationSubtype: String?,
     @Json(name = "month")
     val month: String?
-) {
+) : Parcelable {
     @JsonClass(generateAdapter = true)
+    @Parcelize
     data class Location(
         @Json(name = "latitude")
         val latitude: String?,
@@ -34,21 +38,23 @@ data class StreetLevelCrime(
         val street: Street?,
         @Json(name = "longitude")
         val longitude: String?
-    ) {
+    ) : Parcelable {
         @JsonClass(generateAdapter = true)
+        @Parcelize
         data class Street(
             @Json(name = "id")
             val id: Int?,
             @Json(name = "name")
             val name: String?
-        )
+        ) : Parcelable
     }
 
     @JsonClass(generateAdapter = true)
+    @Parcelize
     data class OutcomeStatus(
         @Json(name = "category")
         val category: String?,
         @Json(name = "date")
         val date: String?
-    )
+    ) : Parcelable
 }

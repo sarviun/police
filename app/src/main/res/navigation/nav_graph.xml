@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/recordListFragment"
-        android:name="com.nuivras.police.RecordListFragment"
+        android:name="com.nuivras.police.RecordList.RecordListFragment"
         android:label="record_list_fragment"
         tools:layout="@layout/record_list_fragment" >
         <action
@@ -29,7 +29,12 @@
     </fragment>
     <fragment
         android:id="@+id/recordDetailFragment"
-        android:name="com.nuivras.police.RecordDetailFragment"
+        android:name="com.nuivras.police.RecordDetail.RecordDetailFragment"
         android:label="record_detail_fragment"
-        tools:layout="@layout/record_detail_fragment" />
+        tools:layout="@layout/record_detail_fragment" >
+        <argument
+            android:name="crime"
+            app:argType="com.nuivras.police.StreetLevelCrime"
+            />
+    </fragment>
 </navigation>
