@@ -5,4 +5,7 @@
     <string name="mapbox_access_token">pk.eyJ1Ijoic2FycGl1biIsImEiOiJjazY0em1mMGMweXhpM2tvNDI3N3hzb2V1In0.thHFQTs4iLSzYYY97h3oaw</string>
     <string name="searching">Searching for incidents around:</string>
     <string name="incidents_found_number">Found %1$d incidents</string>
+    <string name="outcome_status">Outcome status</string>
+    <string name="location_type">Location type</string>
+    <string name="month">Month</string>
 </resources>
