@@ -24,8 +24,8 @@ class ResultListAdapter (val onClickListener: OnClickListener) :
     class IncidentViewHolder(private val binding: IncidentListViewItemBinding) :
         BaseViewHolder<StreetLevelCrime>(binding) {
         override fun bind(item: StreetLevelCrime) {
-            binding.textView.text = item.category
-            binding.textView3.text = item.location?.street?.name
+            binding.category.text = item.category
+            binding.streetName.text = item.location?.street?.name
         }
     }
 
